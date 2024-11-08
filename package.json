@@ -1,5 +1,5 @@
 {
-  "name": "@MarceloRodriguesOliveira/matchello-lib",
+  "name": "matchello-lib",
   "version": "1.0.0",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
