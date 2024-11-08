@@ -53,6 +53,6 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/@{MarceloRodriguesOliveira}"
   },
-  "name": "MarceloRodriguesOliveira}/{matchello}",
+  "name": "MarceloRodriguesOliveira}/{matchello-lib}",
   "description": ""
 }
