@@ -14,6 +14,7 @@ jobs:
         with:
           node-version: 18
           registry-url: https://npm.pkg.github.com/
+          scope: "@MarceloRodriguesOliveira"
       - run: npm install
       - run: npm run test
       - run: npm run build
