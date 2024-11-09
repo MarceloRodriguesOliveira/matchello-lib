@@ -1,4 +1,4 @@
-name: Publish Package
+name: Publish Package to GitHub Packages
 
 on:
   workflow_dispatch:
@@ -9,13 +9,18 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4 # Atualizado para usar Node.js 20
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4 # Atualizado para usar Node.js 20
+        uses: actions/setup-node@v4
         with:
-          node-version: "20" # Utilizando a versão mais recente do Node.js
+          node-version: "20"
           cache: "npm"
+
+      - name: Configure GitHub registry
+        run: |
+          npm config set registry https://npm.pkg.github.com/
+          npm config set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install dependencies
         run: npm install
@@ -26,7 +31,7 @@ jobs:
       - name: Build package
         run: npm run build # Certifique-se de que tem um script "build" no package.json
 
-      - name: Publish to npm
-        run: npm publish
+      - name: Publish to GitHub Packages
+        run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
