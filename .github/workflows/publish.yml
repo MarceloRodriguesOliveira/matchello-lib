@@ -1,7 +1,10 @@
 name: Publish Package to GitHub Packages
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # Permite execução manual
+  push:
+    tags:
+      - "v*.*.*" # Opcional: Executa também em push de tags de versão
 
 jobs:
   publish:
@@ -14,13 +17,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "20" # Use a versão mais recente do Node.js
           cache: "npm"
+          registry-url: "https://npm.pkg.github.com/" # Define o registro para GitHub Packages
 
-      - name: Configure GitHub registry
-        run: |
-          npm config set registry https://npm.pkg.github.com/
-          npm config set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
+      - name: Authenticate to GitHub Packages
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
 
       - name: Install dependencies
         run: npm install
@@ -29,9 +31,9 @@ jobs:
         run: npm test
 
       - name: Build package
-        run: npm run build # Certifique-se de que tem um script "build" no package.json
+        run: npm run build # Assegure-se de ter um script "build" no package.json
 
       - name: Publish to GitHub Packages
-        run: npm publish --access public
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
