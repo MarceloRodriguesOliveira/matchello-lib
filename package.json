@@ -15,6 +15,7 @@
     "/dist"
   ],
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write --parser typescript '**/*.{ts,tsx}'",
     "build": "tsc && vite build",
     "lint": "eslint . --ext .ts,.tsx --ignore-path .gitignore --fix",
