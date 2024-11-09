@@ -1,6 +1,5 @@
 name: Publish Package
 
-# Define um disparo manual
 on:
   workflow_dispatch:
 
@@ -15,7 +14,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "16" # Defina a versão desejada do Node.js
+          node-version: "18" # Usando a versão LTS 18 do Node.js
           cache: "npm"
 
       - name: Install dependencies
