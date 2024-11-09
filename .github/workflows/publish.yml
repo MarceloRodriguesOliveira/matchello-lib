@@ -9,12 +9,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # Atualizado para usar Node.js 20
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4 # Atualizado para usar Node.js 20
         with:
-          node-version: "18" # Usando a versão LTS 18 do Node.js
+          node-version: "20" # Utilizando a versão mais recente do Node.js
           cache: "npm"
 
       - name: Install dependencies
