@@ -4,7 +4,10 @@
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
-  "repository": "https://github.com/MarceloRodriguesOliveira/matchello-lib",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marcelorodriguesoliveira/matchello-lib"
+  },
   "files": [
     "/dist"
   ],
